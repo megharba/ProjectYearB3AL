@@ -34,7 +34,7 @@ exports.createJugement = (req, res, next) => {
     console.log('req.body ', req.body)
 
     const title = req.body.title;
-    const imgUrl = req.file.path;
+    const imgUrl ="C:\\Users\\Public\\projectYears\\" + req.file.path ;
     const note = Math.floor(Math.random() * 20);
 
     console.log(note)
@@ -88,7 +88,7 @@ exports.getJugements = (req, res, next) => {
         res
           .status(200)
           .json({
-            message: 'Fetched produits successfully.',
+            message: 'Fetched jugement successfully.',
             jugements : jugements,
             totalItems: totalItems
           });
