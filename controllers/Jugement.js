@@ -71,6 +71,8 @@ exports.createJugement = (req, res, next) => {
 exports.getJugements = (req, res, next) => {
     const currentPage = req.query.page || 1;
     const perPage = 30;
+    const sort = { note: -1 }
+
     let totalItems;
     Jugement.find()
       .countDocuments()
@@ -78,9 +80,11 @@ exports.getJugements = (req, res, next) => {
         totalItems = count;
         return Jugement.find()
           .skip((currentPage - 1) * perPage)
-          .limit(perPage);
+          .limit(perPage)
+          .sort(sort)
       })
       .then(jugements => {
+        
         res
           .status(200)
           .json({
